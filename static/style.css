@@ -1,0 +1,92 @@
+ html{
+     background-color: #f5f0f2;
+}
+ .loader {
+     display: inline-block;
+     width: 30px;
+     height: 30px;
+     position: relative;
+     border: 4px solid #Fff;
+     top: 50%;
+     animation: loader 2s infinite ease;
+}
+ .loader-wrapper {
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-color: #242f3f;
+     display:flex;
+     justify-content: center;
+     align-items: center;
+}
+ .loader-inner {
+     vertical-align: top;
+     display: inline-block;
+     width: 100%;
+     background-color: #fff;
+     animation: loader-inner 2s infinite ease-in;
+}
+ @keyframes loader {
+     0% {
+         transform: rotate(0deg);
+    }
+     25% {
+         transform: rotate(180deg);
+    }
+     50% {
+         transform: rotate(180deg);
+    }
+     75% {
+         transform: rotate(360deg);
+    }
+     100% {
+         transform: rotate(360deg);
+    }
+}
+ @keyframes loader-inner {
+     0% {
+         height: 0%;
+    }
+     25% {
+         height: 0%;
+    }
+     50% {
+         height: 100%;
+    }
+     75% {
+         height: 100%;
+    }
+     100% {
+         height: 0%;
+    }
+}
+ input{
+     width:50%;
+     height: 40px;
+     text-align: center;
+     border-radius: 10px;
+     border: none;
+     box-shadow: 2px 2px 2px 2px #e6e8eb;
+}
+ input::placeholder {
+     text-align: center;
+}
+ #div-f {
+     height: 100px;
+     width: 100%;
+}
+ #btn{
+     height: 45px;
+     width: 10%;
+     border-radius: 10px;
+     margin-left: 1.5%;
+     border: none;
+     background-color: #4287f5;
+     color: white;
+     box-shadow: 2px 2px 2px 2px #e6e8eb;
+}
+ #myChart1{
+     margin-bottom: 100px;
+}

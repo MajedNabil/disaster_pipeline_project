@@ -1,3 +1,15 @@
+# import section
+import os
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+import pickle as pk
+import nltk
+nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger', 'stopwords'])
+import re
+
+
 # the tokenization function to be used, in order to tokeinze the message inputted.
 def tokenize(text):
     x = 0
@@ -17,17 +29,8 @@ def tokenize(text):
     return clean_tokens
 
 
-# import section
-import os
-
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
-import pickle as pk
-import nltk
-nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger', 'stopwords'])
-import re
-
+# This function takes care of fetching the prediction from
+# the ML model
 def prediction_handler(message):
     print("FROM prediction :    " + message)
     # load the model from the pickle file
@@ -41,15 +44,7 @@ def prediction_handler(message):
     # generate the prediction
     prediction = loaded_model.predict(tokenized_message)[0]
     # the 'prediction' variable contains a vector of 36 element. we need to return its corresponding nominal category
-    map_prediction(prediction)
-
-
-
-
-
-
-
-
+    return convert_to_dictionary(prediction)
 
 
 # This function receives a list, and it converts it to a dictionary, to return it to the js file
@@ -63,16 +58,4 @@ def convert_to_dictionary(list):
     res_dct = dict(zip(m, it))
     print(res_dct[0])
     return res_dct
-
-
-
-
-
-
-
-def map_prediction(prediction):
-    for p in prediction:
-        print("PREDICTION:  " + str(p) + "\n")
-
-
 

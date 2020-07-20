@@ -42,32 +42,34 @@ def root():
     return app.send_static_file('index.html')
 
 
-
-@app.route('/repl', methods=['GET', 'POST'])
-def func():
-    new_freq = request.get_data()
+# This function is invoked when the page loads. It sends
+# the information to the js file, in order to plot the
+# figures
+@app.route('/load', methods=['GET', 'POST'])
+def load_dataset():
     conn = None
-
     try:
+        # open the database
         conn = sqlite3.connect("DisasterResponse.db")
     except sqlite3.Error as e:
         print("ERROR:      "+e)
     cur = conn.cursor()
     cur.execute('SELECT * FROM "Message"')
 
+    # parse the content
     rows = cur.fetchall()
     list = []
     for row in rows:
 
         list.append(row)
         print(row)
+    # convert the list to dictionary, in order to send it
+    # withe JSON response
+    return convert_to_dict(list)
 
 
-    print("\n\n\n\n\n\n\n " + str(new_freq))
-    return convert(list)
-
-
-def convert(a):
+# This function parses a list to a dictionary
+def convert_to_dict(a):
     m = []
     for i in range(len(a)):
         m.append(i)
@@ -77,15 +79,16 @@ def convert(a):
     print(res_dct[0])
     return res_dct
 
-
+# This function is invoked whenever the user presses on
+# the 'predict' button in the UI
 @app.route('/predict' , methods=['POST'])
 # This function receives the input from the Ajax function, and passes it to the prediction_handler function
 def serve_prediction():
+    final_prediction = None
     if request.method == "POST":
-        print("POST REST    " + str(request.values['message']))
         # input the message received from the POST request to tbe prediction_handler function
-        prediction_handler(request.values['message'])
-    return "0"
+        final_prediction = prediction_handler(request.values['message'])
+    return final_prediction
 
 
 if __name__ == '__main__':
