@@ -5,6 +5,7 @@ Module in the Data Scientist Nanodegree course. The README file will be divided 
 - Repository Breakdown 
 - Methodologies 
 - Dependencies 
+- How to Run the Project 
 - Obstacles 
 - Acknowledgements 
 ## Motivation behind the Project 
@@ -44,6 +45,15 @@ Finally, due to the large size of the model, I uploaded into my Google Drive acc
 - HTML, CSS, and JS. 
 - Python 
 - SQLite 
+## How to Run the Project 
+Since this is a Flask project, it should be ran from the **app.py** file. I used PyCharm, and whenever 
+I run the **app.py** the web app just works.
+When it comes to the jupyter notebooks, you can download the notebooks from my github, and run them
+as normal notebooks from your device. 
+When you download my finalized model from my Google Drive, please make sure you put the model in the root directory
+of the project. 
+Also, as proof for my work, I'm going to attach a video that showcases 
+my work.. It resides in my Google Drive [here](https://drive.google.com/drive/folders/1wQcFUY4-M4zaeKu7JQdSHhSpBQK6o0ay?usp=sharing) 
 ## Obstacles 
 - It's my first time using Flask :) 
 - Preparing the model to serve predictions in Flask
