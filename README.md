@@ -27,7 +27,7 @@ In this section, I'm going to breakdown the content of this repo, so that it'll 
   The start of the execution 
 - ### core_db.db 
   The database generated at the end of the ETL pipeline
-- DisasterResponse.db
+- ###DisasterResponse.db
   The database downloaded from the jupyter notebook of the project in Udacity
 ## Methodologies 
 The framework Flask was used to accomplish this project. Also, in order to avoid 
