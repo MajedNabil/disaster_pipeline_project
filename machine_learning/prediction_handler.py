@@ -30,7 +30,7 @@ def tokenize(text):
 
 
 # This function takes care of fetching the prediction from
-# the ML model
+# the ML model, then forward it back to the UI
 def prediction_handler(message):
     print("FROM prediction :    " + message)
     # load the model from the pickle file
