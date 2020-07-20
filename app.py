@@ -60,9 +60,7 @@ def load_dataset():
     rows = cur.fetchall()
     list = []
     for row in rows:
-
         list.append(row)
-        print(row)
     # convert the list to dictionary, in order to send it
     # withe JSON response
     return convert_to_dict(list)
@@ -73,10 +71,8 @@ def convert_to_dict(a):
     m = []
     for i in range(len(a)):
         m.append(i)
-    print("LENGTH:   " + str(len(a)))
     it = iter(a)
     res_dct = dict(zip(m, it))
-    print(res_dct[0])
     return res_dct
 
 # This function is invoked whenever the user presses on

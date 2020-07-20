@@ -32,12 +32,11 @@ def tokenize(text):
 # This function takes care of fetching the prediction from
 # the ML model, then forward it back to the UI
 def prediction_handler(message):
-    print("FROM prediction :    " + message)
     # load the model from the pickle file
     cwd = os.getcwd()  # Get the current working directory (cwd)
     files = os.listdir(cwd)  # Get all the files in that directory
 
-    print("Files in %r: %s" % (cwd, files))
+
     loaded_model = pk.load(open("finalized_model.pkl", 'rb'))
     # tokenize the message
     tokenized_message = tokenize(message)
@@ -53,7 +52,6 @@ def convert_to_dictionary(list):
     m = []
     for i in range(len(list)):
         m.append(i)
-    print("LENGTH:   " + str(len(list)))
     it = iter(list)
     res_dct = dict(zip(m, it))
     print(res_dct[0])

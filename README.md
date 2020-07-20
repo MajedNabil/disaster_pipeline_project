@@ -33,7 +33,7 @@ In this section, I'm going to breakdown the content of this repo, so that it'll 
 The framework Flask was used to accomplish this project. Also, in order to avoid 
 reloading of the same page while contacting the ML model, I used Ajax in js, to communicate between
 the js file and the python scripts. 
-In order to display the charts, I read the data from the database when the page first loads, then the result is
+In order to display the charts, I read the data from the database when the page first loads (from Python), then the result is
 forwarded to the js file, to be displayed with the help of ChartJs. When the button is pressed, the model is 
 used to generate the prediction in a user-friendly manner.
 Finally, due to the large size of the model, I uploaded into my Google Drive account. You can check it from [here](https://drive.google.com/drive/folders/1wQcFUY4-M4zaeKu7JQdSHhSpBQK6o0ay?usp=sharing)
