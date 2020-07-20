@@ -12,13 +12,18 @@ import re
 
 # the tokenization function to be used, in order to tokeinze the message inputted.
 def tokenize(text):
-    x = 0
+    """
+    Input
+    A sentence (string)
+
+    Output
+    A list of tokenized string
+    """
     # normalize the text
     preprocessed_text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
     # tokenize sentence
     tokens = word_tokenize(preprocessed_text)
     # remove the
-    x = x + 1
     tokens = [w for w in tokens if w not in stopwords.words("english")]
     lemmatizer = WordNetLemmatizer()
 
@@ -30,13 +35,16 @@ def tokenize(text):
 
 
 # This function takes care of fetching the prediction from
-# the ML model, then forward it back to the UI
+# the ML model, then forwards it back to the UI
 def prediction_handler(message):
+    """
+    Input
+    A message inputted by the user
+
+    Output
+    A dictionary that contains the values associated with 36 categories
+    """
     # load the model from the pickle file
-    cwd = os.getcwd()  # Get the current working directory (cwd)
-    files = os.listdir(cwd)  # Get all the files in that directory
-
-
     loaded_model = pk.load(open("finalized_model.pkl", 'rb'))
     # tokenize the message
     tokenized_message = tokenize(message)
@@ -48,6 +56,14 @@ def prediction_handler(message):
 
 # This function receives a list, and it converts it to a dictionary, to return it to the js file
 def convert_to_dictionary(list):
+    """
+    Input
+    A list of numbers
+
+    Output
+    The data of the list is represented in a form of dictionary,
+    so that it can be returned to the js file
+    """
     # this list holds the number of indices of the dictionary
     m = []
     for i in range(len(list)):

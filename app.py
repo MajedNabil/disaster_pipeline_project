@@ -18,15 +18,20 @@ import pandas
 import plotly
 app._static_folder = 'static'
 
+
 # the tokenization function to be used, in order to tokeinze the message inputted.
 def tokenize(text):
-    x = 0
+    """
+    Input
+    A sentence (string)
+
+    Output
+    A list of tokenized string
+    """
     # normalize the text
     preprocessed_text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
     # tokenize sentence
     tokens = word_tokenize(preprocessed_text)
-    # remove the
-    x = x + 1
     tokens = [w for w in tokens if w not in stopwords.words("english")]
     lemmatizer = WordNetLemmatizer()
 
@@ -39,6 +44,13 @@ def tokenize(text):
 
 @app.route('/')
 def root():
+    """
+    Input
+    Nothing
+
+    Output
+    The main page of the web app (i.e., index.html)
+    """
     return app.send_static_file('index.html')
 
 
@@ -47,6 +59,14 @@ def root():
 # figures
 @app.route('/load', methods=['GET', 'POST'])
 def load_dataset():
+    """
+    Input
+    Nothing
+
+    Output
+    The dataset is read from the sqlite library, then returned as
+    a dictionary to the UI
+    """
     conn = None
     try:
         # open the database
@@ -55,7 +75,6 @@ def load_dataset():
         print("ERROR:      "+e)
     cur = conn.cursor()
     cur.execute('SELECT * FROM "Message"')
-
     # parse the content
     rows = cur.fetchall()
     list = []
@@ -68,7 +87,16 @@ def load_dataset():
 
 # This function parses a list to a dictionary
 def convert_to_dict(a):
-    m = []
+    """
+    Input
+    A list of numbers
+
+    Output
+    The data of the list is represented in a form of dictionary,
+    so that it can be returned to the js file
+    """
+
+    m = [] # holds the indices (according to the size of the input)
     for i in range(len(a)):
         m.append(i)
     it = iter(a)
@@ -80,6 +108,14 @@ def convert_to_dict(a):
 @app.route('/predict' , methods=['POST'])
 # This function receives the input from the Ajax function, and passes it to the prediction_handler function
 def serve_prediction():
+    """
+    Input
+    - String (fetched from the POST request)
+    - Invoked when the user presses on the predict button
+
+    Output
+    The final prediction is returned to the UI
+    """
     final_prediction = None
     if request.method == "POST":
         # input the message received from the POST request to tbe prediction_handler function

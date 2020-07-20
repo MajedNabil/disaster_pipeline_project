@@ -40,7 +40,6 @@ function renderChart(data, labels, name, id) {
 // This function calls when the page is being loaded. This function
 // receives a JSON object from the python function, and processes the
 // dataset loaded from the python script.
-
 async function processDataset() {
  var newFreq = $('#name').val() //value I want to send
  console.log("jkdkdkdkdkdkdkdkdk hlll");
